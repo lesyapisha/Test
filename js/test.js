@@ -6,13 +6,14 @@ document.body.appendChild(container);
 console.log(container);
 
 //is a function, that create new DOM element
-function createElement(tag, class, id){
+function createElement(tag, nameOfClass, id){
 
 	var newElem = document.createElement(tag);
 
-	newElem.className = class;
+	newElem.className = nameOfClass;
 	newElem.id = id;
 
-	document.appendChild(newElem);
-
+	document.body.appendChild(newElem);
 }
+
+createElement('div', 'row');
