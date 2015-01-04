@@ -11,6 +11,8 @@ function createElement(tag, class, id){
 	var newElem = document.createElement(tag);
 
 	newElem.className = class;
-	newElem.id = 
+	newElem.id = id;
+
+	document.appendChild(newElem);
 
 }
