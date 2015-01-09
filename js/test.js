@@ -1,15 +1,4 @@
 
-(function renderLoginPage(global){
-
-	var container = createElement('div', 'container login-wrapper', document.body);
-	var row = createElement('div', 'row', container);
-	var col = createElement('div', 'col-md-6 col-md-offset-3', row);
-	var h1 = createElement('h1', '', col);
-		text = document.createTextNode('Please sign in');
-		h1.appendChild(text);
-	var formHorizontal = createElement('form','form-horizontal well', col);
-	
-
 	//it is a function, that create new DOM element
 	function createElement(tagName, ClassName, parent){
 		 
@@ -23,9 +12,9 @@
 
 
 	//this function creates input data place
-	function renderInputRow(inputType, text){
+	function renderInputRow(inputType, text, form){
 
-		var formGroup = createElement('div', 'form-group', formHorizontal);
+		var formGroup = createElement('div', 'form-group', form);
 		var labelForEmail = createElement('label','col-sm-2 control-label',formGroup);
 			textInside = document.createTextNode(text)
 			labelForEmail.appendChild(textInside);				
@@ -35,9 +24,9 @@
 	}
 
 	//function ask about saving user's data 
-	function renderCheckboxRow(inputType, text){
+	function renderCheckboxRow(inputType, text, form){
 
-		var formGroup = createElement('div', 'form-group', formHorizontal);	
+		var formGroup = createElement('div', 'form-group', form);	
 		var divCol = createElement('div','col-sm-offset-2 col-sm-10',formGroup);
 		var div = createElement('div','checkbox', divCol);
 		var label = createElement('label','', div);
@@ -50,9 +39,9 @@
 	}
 
 	//create button of submit
-	function renderSubmitRow(buttonType, text){
+	function renderSubmitRow(buttonType, text, form){
 
-		var formGroup = createElement('diu', 'form-group', formHorizontal);
+		var formGroup = createElement('diu', 'form-group', form);
 		var divCol = createElement('div', 'col-sm-offset-2 col-sm-10', formGroup);
 		var button = createElement('button', 'btn btn-primary', divCol);
 			button.type = buttonType; 
@@ -63,16 +52,33 @@
 	}
 
 
-	function renderForm(){
+	function renderForm(parent){
 		
-		renderInputRow('email','Email');
-		renderInputRow('password','Password');
-		renderCheckboxRow('checkbox','Remember me');
-		renderSubmitRow('submit','Sing in');
+		var form = createElement('form','form-horizontal well', parent);
+
+		renderInputRow('email','Email', form);
+		renderInputRow('password','Password', form);
+		renderCheckboxRow('checkbox','Remember me', form);
+		renderSubmitRow('submit','Sing in', form);
+
 		
 	}
 
-	renderForm();
-})(window);
+	
+	function renderLoginPage(){
+
+		var container = createElement('div', 'container login-wrapper', document.body);
+		var row = createElement('div', 'row', container);
+		var col = createElement('div', 'col-md-6 col-md-offset-3', row);
+		var h1 = createElement('h1', '', col);
+			text = document.createTextNode('Please sign in');
+			h1.appendChild(text);
+
+	
+		renderForm(col);
+	}
+
+	renderLoginPage();
+
 
 
