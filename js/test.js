@@ -1,4 +1,6 @@
 
+	
+	
 	//it is a function, that create new DOM element
 	function createElement(tagName, ClassName, parent){
 		 
@@ -12,7 +14,7 @@
 
 
 	//this function creates input data place
-	function renderInputRow(inputType, text, form){
+	function renderInputRow(inputType, inputPlaceholder, text, form){
 
 		var formGroup = createElement('div', 'form-group', form);
 		var labelForEmail = createElement('label','col-sm-2 control-label',formGroup);
@@ -21,6 +23,7 @@
 		var divCol = createElement('div','col-sm-10',formGroup);
 		var input = createElement('input','form-control', divCol)
 			input.type = inputType;
+			input.placeholder = inputPlaceholder;
 	}
 
 	//function ask about saving user's data 
@@ -41,7 +44,7 @@
 	//create button of submit
 	function renderSubmitRow(buttonType, text, form){
 
-		var formGroup = createElement('diu', 'form-group', form);
+		var formGroup = createElement('div', 'form-group', form);
 		var divCol = createElement('div', 'col-sm-offset-2 col-sm-10', formGroup);
 		var button = createElement('button', 'btn btn-primary', divCol);
 			button.type = buttonType; 
@@ -56,10 +59,10 @@
 		
 		var form = createElement('form','form-horizontal well', parent);
 
-		renderInputRow('email','Email', form);
-		renderInputRow('password','Password', form);
+		renderInputRow('email', 'Email','Email', form);
+		renderInputRow('password', 'Password','Password', form);
 		renderCheckboxRow('checkbox','Remember me', form);
-		renderSubmitRow('submit','Sing in', form);
+		renderSubmitRow('submit','Sign in', form);
 
 		
 	}
